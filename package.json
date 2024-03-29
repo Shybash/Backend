@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server",
-    "server":"nodemon server",
+    "start": "node index",
+    "server":"nodemon index",
     "client":"npm start --prefix Backend",
-    "dev":"concurrently  \"npm run server\" \"npm run client\" "
+    "dev":"concurrently  \"npm run index\" \"npm run client\" "
   },
   "author": "shybashshaik",
   "license": "ISC",
