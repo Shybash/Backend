@@ -1,6 +1,6 @@
 // Import necessary modules
 const express = require('express');
-const Student = require('StudentForm'); // Assuming you have a Student model defined
+const Student = require('../models/StudentForm'); // Assuming you have a Student model defined
 
 // Route to delete a student by ID
 const deleteStudent = async (req, res) => {

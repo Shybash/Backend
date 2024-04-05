@@ -1,4 +1,4 @@
-const StudentForm=require('StudentForm');
+const StudentForm=require('../models/StudentForm');
 
 
 const studentForm=async(req,res,next)=>{

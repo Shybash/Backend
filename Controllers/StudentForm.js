@@ -1,5 +1,5 @@
 // Import the required modules
-const Student = require('StudentForm'); // Assuming you have a Student model defined
+const Student = require('../models/StudentForm'); // Assuming you have a Student model defined
 
 // Define the controller function to fetch student form data grouped by club
 const StudentForm= async (req, res) => {
