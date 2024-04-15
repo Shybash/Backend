@@ -6,11 +6,11 @@ const personInfoSchema = new mongoose.Schema({
         ref: 'Student',
         required:true,
     },
-    name:{
+    username:{
         type:String,
         required:true,
     },
-    rollNumber: { 
+    rollnum: { 
         type: String, 
         required: true
      },
