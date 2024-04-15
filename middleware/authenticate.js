@@ -5,7 +5,7 @@ const authenticate = (req, res, next) => {
 
     if (!token) {
         return res.status(400).send("Authorization token not found");
-    }
+    }z
 
     try {
         const decoded = jwt.verify(token, process.env.JWT_KEY || 'fallback_secret_key');
