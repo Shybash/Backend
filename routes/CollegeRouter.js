@@ -15,9 +15,6 @@ router.post('/LoginClg', ClgLoginController);
 router.get('/StudentForm',StudentForm);
 
 //club
-router.get('/getClub', getAllClubs);
-
-
 
 router.post('/CreateClub',CreateClub);
 module.exports = router;
