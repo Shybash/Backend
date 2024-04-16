@@ -2,16 +2,6 @@ const express = require('express');
 const router = express.Router();
 const Club = require('../models/Club');
 
-// Get all clubs
-const getAllClubs = async (req, res) => {
-    try {
-        const clubs = await Club.find();
-        res.json(clubs);
-    } catch (err) {
-        res.status(500).json({ message: err.message });
-    }
-};
-
 // Create a club
 const CreateClub = async (req, res) => {
     const { name, description, category, createdBy } = req.body;
@@ -27,6 +17,5 @@ const CreateClub = async (req, res) => {
 
 // Exporting the route handlers
 module.exports = {
-    getAllClubs,
     CreateClub
 };

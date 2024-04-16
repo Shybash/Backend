@@ -3,7 +3,7 @@ const router = express.Router();
 const ClgLoginController = require('../Controllers/ClgLogin-controller');
 const ClgRegisterController = require('../Controllers/ClgRegister-controller');
 const { StudentForm } = require('../Controllers/StudentForm');
-const { getAllClubs, CreateClub } = require('../Controllers/Club-controller');
+const { CreateClub } = require('../Controllers/Club-controller');
 
 // Register route
 router.post('/RegisterClg', ClgRegisterController);
