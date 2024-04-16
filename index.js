@@ -8,6 +8,7 @@ const connection=require("./db");
 const studentRoutes=require('./routes/StudentRoutes');
 const collegeRouters=require('./routes/CollegeRouter');
 
+
 //middleware
 app.use(express.json());
 app.use(cors({origin:"*"}));
