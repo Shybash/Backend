@@ -19,5 +19,5 @@ router.get('/getClub', getAllClubs);
 
 
 
-router.post('/CreateClub',createClub);
+router.post('/CreateClub',CreateClub);
 module.exports = router;
