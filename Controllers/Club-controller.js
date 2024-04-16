@@ -13,7 +13,7 @@ const getAllClubs = async (req, res) => {
 };
 
 // Create a club
-const createClub = async (req, res) => {
+const CreateClub = async (req, res) => {
     const { name, description, category, createdBy } = req.body;
     const club = new Club({ name, description, category, createdBy });
 
@@ -28,5 +28,5 @@ const createClub = async (req, res) => {
 // Exporting the route handlers
 module.exports = {
     getAllClubs,
-    createClub
+    CreateClub
 };
