@@ -1,9 +1,8 @@
-const express = require('express');
-const router = express.Router();
+// controllers/Club-controller.js
+
 const Club = require('../models/Club');
 
-// Create a club
-const CreateClub = async (req, res) => {
+const createClub = async (req, res) => {
     const { name, description, category, createdBy } = req.body;
     const club = new Club({ name, description, category, createdBy });
 
@@ -15,7 +14,6 @@ const CreateClub = async (req, res) => {
     }
 };
 
-// Exporting the route handlers
 module.exports = {
-    CreateClub
+    createClub
 };
