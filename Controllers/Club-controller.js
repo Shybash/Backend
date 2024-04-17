@@ -1,9 +1,10 @@
-// controllers/Club-controller.js
-
-const Club = require('../models/Club');
+const Club=require('../models/Club');
 
 const CreateClub = async (req, res) => {
     const { name, description, category, createdBy } = req.body;
+    if (!name || !description || !category || !createdBy) {
+        return res.status(400).json({ message: 'All fields are required.' });
+    }
     const club = new Club({ name, description, category, createdBy });
 
     try {
