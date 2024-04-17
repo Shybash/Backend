@@ -18,6 +18,6 @@ router.get('/StudentForm',StudentForm);
 // Route for creating a club
 router.post('/CreateClub', CreateClub);
 
-router.get('GetClubs',GetClubs);
+router.get('/GetClubs',GetClubs);
 
 module.exports = router;

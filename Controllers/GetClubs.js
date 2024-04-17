@@ -1,17 +1,18 @@
-// controllers/ClubController.js
+// Import necessary dependencies
+const express = require('express');
+const Club = require('./models/Club');
 
-const Club = require('../models/Club');
-
-// Controller to fetch only club names
-const GetClubs = async (req, res) => {
+// Create a named function for fetching clubs
+async function GetClubs(req, res) {
   try {
-    const clubs = await Club.find({}, 'name'); // Only retrieve the 'name' field
-    res.status(200).json(clubs);
+    // Fetch all clubs from the database
+    const clubs = await Club.find();
+    res.json(clubs);
   } catch (error) {
-    res.status(500).json({ message: error.message });
+    console.error('Error fetching clubs:', error);
+    res.status(500).json({ message: 'An error occurred while fetching clubs' });
   }
-};
+}
 
-module.exports = {
-  GetClubs
-};
+// Export the function
+module.exports = GetClubs;
