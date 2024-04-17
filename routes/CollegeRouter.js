@@ -4,7 +4,7 @@ const ClgLoginController = require('../Controllers/ClgLogin-controller');
 const ClgRegisterController = require('../Controllers/ClgRegister-controller');
 const { StudentForm } = require('../Controllers/StudentForm');
 const {CreateClub}=require('../Controllers/Club-controller');
-const { GetClubs } = require('../Controllers/GetClubs');
+const GetClubs = require('../Controllers/GetClubs');
 // Register route
 router.post('/RegisterClg', ClgRegisterController);
 

@@ -1,9 +1,9 @@
 // Import necessary dependencies
 
-const Club = require('./models/Club');
+const Club = require('../models/Club');
 
 // Create a named function for fetching clubs
-async function GetClubs(req, res) {
+const GetClubs=async(req, res) =>{
   try {
     // Fetch all clubs from the database
     const clubs = await Club.find();
