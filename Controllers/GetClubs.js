@@ -1,5 +1,5 @@
 // Import necessary dependencies
-const express = require('express');
+
 const Club = require('./models/Club');
 
 // Create a named function for fetching clubs
