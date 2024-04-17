@@ -13,11 +13,6 @@ const CollegeSchema=new mongoose.Schema({
     password:{
         type:String,
         required:true
-    },
-    confirmpassword:{
-        type:String,
-        required:false
-
     }
 });
 
