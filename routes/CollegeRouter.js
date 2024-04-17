@@ -3,7 +3,8 @@ const router = express.Router();
 const ClgLoginController = require('../Controllers/ClgLogin-controller');
 const ClgRegisterController = require('../Controllers/ClgRegister-controller');
 const { StudentForm } = require('../Controllers/StudentForm');
-const {CreateClub}=require('../Controllers/Club-controller')
+const {CreateClub}=require('../Controllers/Club-controller');
+const { GetClubs } = require('../Controllers/GetClubs');
 // Register route
 router.post('/RegisterClg', ClgRegisterController);
 
@@ -16,5 +17,7 @@ router.get('/StudentForm',StudentForm);
 // Route for creating a club
 // Route for creating a club
 router.post('/CreateClub', CreateClub);
+
+router.get('GetClubs',GetClubs);
 
 module.exports = router;
