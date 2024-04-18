@@ -16,8 +16,6 @@ router.post('/login', login);
 // Student list route
 router.post('/studentForm', studentForm);
 
-// Delete student route
-router.delete('/deleteStudent/:id', deleteStudent); // Use the deleteStudent function
 
 router.get('/student/:userId', Profile);
 module.exports = router;
