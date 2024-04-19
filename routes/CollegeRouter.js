@@ -7,6 +7,7 @@ const {CreateClub}=require('../Controllers/Club-controller');
 const GetClubs = require('../Controllers/GetClubs');
 const { AcceptStudent } = require('../Controllers/AcceptStudent');
 const deleteStudent = require('../Controllers/deleteStudent');
+const { GetClubMembers } = require('../Controllers/GetClubMembers');
 // Register route
 router.post('/RegisterClg', ClgRegisterController);
 
@@ -17,7 +18,6 @@ router.post('/LoginClg', ClgLoginController);
 router.get('/StudentForm',StudentForm);
 
 // Route for creating a club
-// Route for creating a club
 router.post('/CreateClub', CreateClub);
 
 router.get('/GetClubs',GetClubs);
@@ -26,6 +26,8 @@ router.post('/AcceptStudent/:id',AcceptStudent);
 
 // Delete student route
 router.delete('/deleteStudent/:id',deleteStudent); // Use the deleteStudent function
+
+router.get('/GetClubMembers',GetClubMembers);
 
 
 
