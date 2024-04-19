@@ -1,4 +1,4 @@
-const Student = require('../models/Student'); // Assuming you have a student model
+const Student = require('../models/StudentForm'); // Assuming you have a student model
 const ClubMember = require('../models/ClubMember');
 
 const AcceptStudent = async (req, res) => {
