@@ -6,7 +6,7 @@ const StudentQuery = async (req,res) => {
   try {
     // Save the student query and suggestion to the database
     const { query, suggestion } = req.body;
-    console.log(query,suggestion);
+    // console.log(query,suggestion);
     const newStudentQuery = new Query({ query, suggestion });
     await newStudentQuery.save();
 
