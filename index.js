@@ -8,7 +8,7 @@ const studentRoutes = require('./routes/StudentRoutes');
 const collegeRouters = require('./routes/CollegeRouter');
 
 // Middleware
-app.use(cors({ origin: "*" })); // Allow requests from any origin
+app.use(cors()); // Allow requests from any origin
 app.use(bodyParser.json()); // Parse JSON bodies
 
 // Database connection
