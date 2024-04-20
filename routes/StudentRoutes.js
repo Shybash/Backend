@@ -18,4 +18,5 @@ router.post('/studentForm', studentForm);
 
 
 router.get('/student/:userId', Profile);
+router.post('/StudentQuery', StudentQuery);
 module.exports = router;
