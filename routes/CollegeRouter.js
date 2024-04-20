@@ -28,7 +28,6 @@ router.get('/GetClubs', GetClubs);
 
 router.post('/AcceptStudent/:id', AcceptStudent);
 
-router.get('/getQuery', fetchStudentQueries);
 // Delete student route
 router.delete('/deleteStudent/:id', deleteStudent); // Use the deleteStudent function
 
