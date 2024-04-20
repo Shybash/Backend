@@ -10,7 +10,7 @@ const collegeRouters=require('./routes/CollegeRouter');
 
 //middleware
 app.use(express.json());
-app.use(cors({origin:"*"}));
+app.use(cors());
 app.use(bodyParser.json());
 //database connection
 connection();
