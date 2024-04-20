@@ -1,5 +1,3 @@
-const express = require('express');
-const router = express.Router();
 const Query = require('../models/Query');
 
 const studentQuery = async (req, res) => {
