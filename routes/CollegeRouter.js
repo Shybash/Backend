@@ -9,7 +9,8 @@ const GetClubs = require('../Controllers/GetClubs');
 const { AcceptStudent } = require('../Controllers/AcceptStudent');
 const deleteStudent = require('../Controllers/deleteStudent');
 const { GetClubMembers, deleteClubMember } = require('../Controllers/ClubMembers');
-const { StudentQuery, fetchStudentQueries } = require('../Controllers/StudentQuery'); // Corrected require path
+const GetQuery = require('../Controllers/GetQuery');
+const { DeleteQuery } = require('../Controllers/StudentQuery');
 
 
 // Register route
@@ -34,6 +35,11 @@ router.delete('/deleteStudent/:id', deleteStudent); // Use the deleteStudent fun
 router.get('/GetClubMembers', GetClubMembers);
 
 router.delete('/deleteClubMember/:clubName/:memberId', deleteClubMember);
+
+router.get('/GetQuery',GetQuery);
+
+
+router.delete('/deleteQuery/:id',DeleteQuery);
 
 
 module.exports = router;

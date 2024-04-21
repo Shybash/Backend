@@ -23,6 +23,6 @@ router.get('/student/:userId', Profile);
 
 router.post('/StudentQuery', studentQuery);
 
-router.get('/GetQuery',GetQuery);
+
 
 module.exports = router;
