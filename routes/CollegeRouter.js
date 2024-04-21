@@ -38,7 +38,7 @@ router.delete('/deleteClubMember/:clubName/:memberId', deleteClubMember);
 router.get('/GetQuery',GetQuery);
 
 
-router.delete('/deleteQuery/:queryId',DeleteQuery);
+router.delete('/deleteQuery/:id',DeleteQuery);
 
 
 module.exports = router;

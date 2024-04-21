@@ -2,10 +2,10 @@
 
 const Query=require('../models/Query');
 
-const DeleteQuery= async (queryId) => {
+const DeleteQuery= async (id) => {
     try {
       // Find the query by ID and delete it
-      const deletedQuery = await Query.findByIdAndDelete(queryId);
+      const deletedQuery = await Query.findByIdAndDelete(id);
   
       if (!deletedQuery) {
         throw new Error('Query not found');
