@@ -19,22 +19,5 @@ const studentQuery = async (req, res) => {
     res.status(500).json({ success: false, message: 'An error occurred while saving the query.' });
   }
 };
-// Function to delete a query by ID
-const DeleteQuery= async (id) => {
-  try {
-    // Find the query by ID and delete it
-    const deletedQuery = await Query.findByIdAndDelete(id);
 
-    if (!deletedQuery) {
-      throw new Error('Query not found');
-    }
-
-    return { success: true };
-  } catch (error) {
-    console.error('Error deleting query:', error);
-    throw new Error('An error occurred while deleting the query');
-  }
-};
-
-
-module.exports = { studentQuery,DeleteQuery};
+module.exports = { studentQuery};
