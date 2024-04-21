@@ -1,23 +1,27 @@
+// Import necessary modules
+const express = require('express');
+const Student = require('../models/Query'); // Assuming you have a Student model defined
 
+// Route to delete a student by ID
+const deleteQuery = async (req, res) => {
+  const { id } = req.params;
 
-const Query=require('../models/Query');
+  try {
+    // Find the student by ID and delete it
+    const deletedStudent = await Student.findByIdAndDelete(id);
 
-const DeleteQuery= async (id) => {
-    try {
-      // Find the query by ID and delete it
-      const deletedQuery = await Query.findByIdAndDelete(id);
-  
-      if (!deletedQuery) {
-        throw new Error('Query not found');
-      }
-  
-      return { success: true };
-    } catch (error) {
-      console.error('Error deleting query:', error);
-      throw new Error('An error occurred while deleting the query');
+    if (!deletedStudent) {
+      // If no student is found with the given ID, return a 404 status code
+      return res.status(404).json({ message: 'Student not found.' });
     }
-  };
 
-  module.exports=DeleteQuery;
-  
-  
+    // If deletion is successful, return a success message
+    res.json({ message: 'Student deleted successfully.' });
+  } catch (error) {
+    // If an error occurs, return a 500 status code and an error message
+    console.error('Error deleting student:', error);
+    res.status(500).json({ message: 'Failed to delete student. Please try again later.' });
+  }
+};
+
+module.exports = deleteQuery;
