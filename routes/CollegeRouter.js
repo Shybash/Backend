@@ -9,8 +9,8 @@ const GetClubs = require('../Controllers/GetClubs');
 const { AcceptStudent } = require('../Controllers/AcceptStudent');
 const deleteStudent = require('../Controllers/deleteStudent');
 const { GetClubMembers, deleteClubMember } = require('../Controllers/ClubMembers');
-const GetQuery = require('../Controllers/GetQuery');
-const { DeleteQuery } = require('../Controllers/StudentQuery');
+// const GetQuery = require('../Controllers/GetQuery');
+const { DeleteQuery,GetQuery  } = require('../Controllers/StudentQuery');
 
 
 // Register route
