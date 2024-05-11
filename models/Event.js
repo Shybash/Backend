@@ -1,13 +1,14 @@
-// EventModel.js
+// Event.js (in your models directory)
+
 const mongoose = require('mongoose');
 
-// Define event schema
 const eventSchema = new mongoose.Schema({
-  title: String,
-  date: Date,
-  time: String,
-  venue: String,
-  description: String
+  title: { type: String, required: true },
+  date: { type: Date, required: true },
+  time: { type: String, required: true },
+  ampm: { type: String, required: true }, // Add ampm field to store "AM" or "PM"
+  venue: { type: String, required: true },
+  description: { type: String, required: true }
 });
 
 const Event = mongoose.model('Event', eventSchema);
