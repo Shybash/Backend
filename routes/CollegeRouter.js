@@ -11,6 +11,7 @@ const deleteStudent = require('../Controllers/deleteStudent');
 const { GetClubMembers, deleteClubMember } = require('../Controllers/ClubMembers');
 const GetQuery = require('../Controllers/GetQuery');
 const DeleteQuery = require('../Controllers/DeleteQuery');
+const { addEvent } = require('../Controllers/Events-controller');
 
 // Register route
 router.post('/RegisterClg', ClgRegisterController);
@@ -31,12 +32,13 @@ router.post('/AcceptStudent/:id', AcceptStudent);
 // Delete student route
 router.delete('/deleteStudent/:id', deleteStudent); // Use the deleteStudent function
 
+
+router.post('/Events',addEvent);
 router.get('/GetClubMembers', GetClubMembers);
 
 router.delete('/deleteClubMember/:clubName/:memberId', deleteClubMember);
 
 router.get('/GetQuery',GetQuery);
-
 
 router.delete('/deleteQuery/:id',DeleteQuery);
 

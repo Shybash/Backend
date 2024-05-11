@@ -7,6 +7,7 @@ const deleteStudent = require('../Controllers/deleteStudent'); // Import the del
 const Profile = require('../Controllers/Profile');
 const { studentQuery } = require('../Controllers/StudentQuery');
 const GetQuery = require('../Controllers/GetQuery');
+const { getEvents } = require('../Controllers/GetEvents');
 
 require('dotenv').config();
 
@@ -23,6 +24,6 @@ router.get('/student/:userId', Profile);
 
 router.post('/StudentQuery', studentQuery);
 
-
+router.get('/GetEvents',getEvents);
 
 module.exports = router;
