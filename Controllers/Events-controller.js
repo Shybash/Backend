@@ -3,7 +3,7 @@
 const Event = require('../models/Event');
 
 // Function to create a new event
-const createEvent = async (req, res) => {
+const addEvent = async (req, res) => {
   try {
     const { title, date, time, ampm, venue, description } = req.body;
 
@@ -27,4 +27,4 @@ const createEvent = async (req, res) => {
   }
 };
 
-module.exports = { createEvent };
+module.exports = {addEvent };

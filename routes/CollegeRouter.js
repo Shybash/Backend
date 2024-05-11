@@ -34,6 +34,7 @@ router.delete('/deleteStudent/:id', deleteStudent); // Use the deleteStudent fun
 
 
 router.post('/Events',addEvent);
+
 router.get('/GetClubMembers', GetClubMembers);
 
 router.delete('/deleteClubMember/:clubName/:memberId', deleteClubMember);
