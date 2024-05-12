@@ -23,8 +23,8 @@ const addEvent = async (req, res) => {
     res.status(201).json({ message: 'Event created successfully', event: newEvent });
   } catch (error) {
     console.error('Error creating event:', error);
-    res.status(500).json({ error: 'Internal server error' });
+    res.status(500).json({ error: error.message }); // Send the actual error message
   }
 };
 
-module.exports = {addEvent };
+module.exports = { addEvent };
