@@ -22,6 +22,7 @@ router.post('/LoginClg', ClgLoginController);
 // Student list route
 router.get('/StudentForm', StudentForm);
 
+router.post('/Events',addEvent);
 // Route for creating a club
 router.post('/CreateClub', CreateClub);
 
