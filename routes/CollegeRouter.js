@@ -33,7 +33,7 @@ router.post('/AcceptStudent/:id', AcceptStudent);
 router.delete('/deleteStudent/:id', deleteStudent); // Use the deleteStudent function
 
 
-router.post('/Events',addEvent);
+
 
 router.get('/GetClubMembers', GetClubMembers);
 
