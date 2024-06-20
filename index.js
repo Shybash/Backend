@@ -17,12 +17,9 @@ const app = express();
 // Middleware
 app.use(express.json());
 app.use(bodyParser.json());
+app.use(cors({origin:"*"}));
 app.use(cookieParser());
 
-app.use(cors({
-  origin: "https://frontend-clubhub-virid.vercel.app",
-  credentials: true,
-}));
 // Session middleware with cookie options
 app.use(session({
   secret: process.env.SESSION_SECRET,
