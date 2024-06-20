@@ -22,8 +22,6 @@ app.use(cookieParser());
 app.use(cors({
   origin: "https://frontend-clubhub-virid.vercel.app",
   credentials: true,
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-  allowedHeaders: 'Content-Type, Authorization'
 }));
 // Session middleware with cookie options
 app.use(session({
