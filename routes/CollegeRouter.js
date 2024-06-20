@@ -1,4 +1,3 @@
-// Router file (CollegeRouter.js)
 const express = require('express');
 const router = express.Router();
 const ClgLoginController = require('../Controllers/ClgLogin-controller');
@@ -7,7 +6,6 @@ const { StudentForm } = require('../Controllers/StudentForm');
 const { CreateClub } = require('../Controllers/Club-controller');
 const GetClubs = require('../Controllers/GetClubs');
 const { AcceptStudent } = require('../Controllers/AcceptStudent');
-const deleteStudent = require('../Controllers/deleteStudent');
 const { GetClubMembers, deleteClubMember } = require('../Controllers/ClubMembers');
 const GetQuery = require('../Controllers/GetQuery');
 const DeleteQuery = require('../Controllers/DeleteQuery');
@@ -23,17 +21,12 @@ router.post('/LoginClg', ClgLoginController);
 router.get('/StudentForm', StudentForm);
 
 router.post('/Events',addEvent);
-// Route for creating a club
+
 router.post('/CreateClub', CreateClub);
 
 router.get('/GetClubs', GetClubs);
 
 router.post('/AcceptStudent/:id', AcceptStudent);
-
-// Delete student route
-router.delete('/deleteStudent/:id', deleteStudent); // Use the deleteStudent function
-
-
 
 
 router.get('/GetClubMembers', GetClubMembers);

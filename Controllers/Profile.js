@@ -1,6 +1,5 @@
-const Student = require('../models/Stdinfo'); // Assuming you have a Student model
+const Student = require('../models/Stdinfo'); 
 
-// Define the route handler as an arrow function
 const Profile = async (req, res) => {
     const userId = req.params.userId;
 

@@ -3,7 +3,7 @@ const ClubMember = require('../models/ClubMember');
 const GetClubMembers = async (req, res) => {
   try {
     const aggregatedClubMembers = await ClubMember.aggregate([
-      // Group by club field
+      // Group by club field using aggregatino in mongodb
       { $group: { _id: '$club', members: { $push: '$$ROOT' } } }
     ]);
     

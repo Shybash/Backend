@@ -5,13 +5,12 @@ const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
-const axios = require('axios'); // Added axios for HTTP requests
-const jwt = require('jsonwebtoken'); // Added jwt for token operations
-const queryString = require('query-string'); // Removed dynamic import
+const axios = require('axios'); 
+const jwt = require('jsonwebtoken'); 
 require('dotenv').config();
 const connection = require("./db");
 const studentRoutes = require('./routes/StudentRoutes');
-const collegeRoutes = require('./routes/CollegeRoutes');
+const collegeRoutes = require('./routes/CollegeRouter');
 
 const app = express();
 

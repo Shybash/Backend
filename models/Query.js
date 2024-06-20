@@ -1,4 +1,4 @@
-// models/StudentQuery.js
+
 
 const mongoose = require('mongoose');
 

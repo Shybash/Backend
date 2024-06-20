@@ -1,7 +1,7 @@
 const Student = require('../models/Student');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const PersonalInfo = require('../models/Stdinfo'); // Assuming you have a PersonalInfo model
+const PersonalInfo = require('../models/Stdinfo'); 
 require('dotenv').config();
 
 const login = async (req, res, next) => {
@@ -21,8 +21,8 @@ const login = async (req, res, next) => {
 
         const token = jwt.sign(
             { userId: student._id },
-            process.env.JWT_SECRET || 'fallback-secret-key', // Use a secure secret key
-            { expiresIn: '1h' } // Set the token expiration time
+            process.env.JWT_SECRET || 'fallback-secret-key', 
+            { expiresIn: '1h' } 
         );
 
         const personalInfo = await PersonalInfo.findOne({ userId: student._id });

@@ -1,7 +1,6 @@
-// eventsController.js
+
 const Event = require('../models/Event');
 
-// Function to delete expired events
 const deleteExpiredEvents = async () => {
   try {
     const currentTime = new Date();
@@ -12,10 +11,8 @@ const deleteExpiredEvents = async () => {
   }
 };
 
-// Function to fetch all events
 const getEvents = async (req, res) => {
   try {
-    // Call deleteExpiredEvents before fetching events
     await deleteExpiredEvents();
 
     const events = await Event.find();

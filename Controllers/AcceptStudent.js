@@ -1,17 +1,16 @@
-const Student = require('../models/StudentForm'); // Assuming you have a student model
+const Student = require('../models/StudentForm');
 const ClubMember = require('../models/ClubMember');
 
 const AcceptStudent = async (req, res) => {
   try {
     const { id } = req.params;
-    // Find the student by ID
+   
     const student = await Student.findById(id);
     if (!student) {
       return res.status(404).json({ message: 'Student not found' });
     }
 
-    //const present=await ClubMember.findById(id);
-    // Create club member record
+  
     const clubMember = new ClubMember({
       rollNum: student.rollNum,
       name: student.name,

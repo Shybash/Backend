@@ -1,4 +1,4 @@
-// models/club.js
+
 
 const mongoose = require('mongoose');
 
