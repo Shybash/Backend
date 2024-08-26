@@ -13,12 +13,12 @@ const collegeLogin = async (req, res, next) => {
 
         const college = await College.findOne({ email });
         if (!college) {
-            return res.status(401).json({ error: 'Invalid email or password' }); // Avoid revealing which is incorrect
+            return res.status(401).json({ error: 'Invalid email or password' }); 
         }
 
         const isPasswordValid = await bcrypt.compare(password, college.password);
         if (!isPasswordValid) {
-            return res.status(401).json({ error: 'Invalid email or password' }); // Same generic message for security
+            return res.status(401).json({ error: 'Invalid email or password' });
         }
 
         const personalInfo = await PersonalInfo.findOne({ userId: college._id });
