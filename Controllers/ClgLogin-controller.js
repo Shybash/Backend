@@ -33,7 +33,6 @@ const collegeLogin = async (req, res, next) => {
         );
 
         res.cookie('token', token, {
-            httpOnly: true,
             secure: process.env.NODE_ENV === 'production',
             sameSite: 'Strict',
             maxAge: 3600000,
