@@ -3,26 +3,54 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
-const Clglogin = async (req, res, next) => {
+const collegeLogin = async (req, res, next) => {
     try {
         const { email, password } = req.body;
-        const college = await College.findOne({ email });
 
+        if (!email || !password) {
+            return res.status(400).json({ error: 'Email and password are required' });
+        }
+
+        const college = await College.findOne({ email });
         if (!college) {
-            return res.status(401).json({ error: 'Invalid email' });
+            return res.status(401).json({ error: 'Invalid email or password' }); // Avoid revealing which is incorrect
         }
 
         const isPasswordValid = await bcrypt.compare(password, college.password);
-
         if (!isPasswordValid) {
-            return res.status(401).json({ error: 'Invalid password' });
+            return res.status(401).json({ error: 'Invalid email or password' }); // Same generic message for security
         }
 
-        const token = jwt.sign({ id: college._id }, process.env.JWT_KEY || 'fallback_secret_key');
-        res.status(200).json({ token });
+        const personalInfo = await PersonalInfo.findOne({ userId: college._id });
+        if (!personalInfo) {
+            return res.status(404).json({ error: 'Personal information not found' });
+        }
+
+        const token = jwt.sign(
+            { userId: college._id },
+            process.env.JWT_SECRET || 'fallback-secret-key',
+            { expiresIn: '1h' }
+        );
+
+        res.cookie('token', token, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === 'production',
+            sameSite: 'Strict',
+            maxAge: 3600000,
+        });
+
+        res.status(200).json({
+            message: 'Login successful',
+            user: {
+                _id: personalInfo._id,
+                email: college.email,
+                name: personalInfo.name,
+                collegeName: personalInfo.collegeName,
+            }
+        });
     } catch (error) {
-        res.status(400).json({ error: error.message });
+        res.status(500).json({ error: 'An error occurred while logging in' });
     }
 };
 
-module.exports = Clglogin;
+module.exports = collegeLogin;
