@@ -16,7 +16,7 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 
 
-const allowedOrigins = ['https://frontend-clubhub-virid.vercel.app']; 
+const allowedOrigins = ['https://frontend-clubhub-virid.vercel.app','http://localhost:3000']; 
 
 app.use(cors({
     origin: allowedOrigins,
