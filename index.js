@@ -16,7 +16,13 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 
 
-app.use(cors({ origin: "*", credentials: true }));
+const allowedOrigins = ['https://frontend-clubhub-virid.vercel.app']; 
+
+app.use(cors({
+    origin: allowedOrigins,
+    credentials: true,
+}));
+
 
 
 app.use(session({
