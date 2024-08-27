@@ -6,7 +6,7 @@ const cookieParser = require('cookie-parser');
 const passport = require('passport'); 
 require('dotenv').config();
 const passportConfig = require('./config/passport'); 
-const connection = require('./config/db');
+const connection = require('./db');
 const studentRoutes=require('./routes/StudentRoutes');
 const collegeRoutes=require('./routes/CollegeRouter');
 const app = express();
@@ -16,7 +16,7 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 
 
-const allowedOrigins = ['https://frontend-clubhub-virid.vercel.app','http://localhost:3000']; 
+const allowedOrigins = ['https://frontend-clubhub-virid.vercel.app','http://localhost:3000/Login']; 
 
 app.use(cors({
     origin: allowedOrigins,
@@ -29,8 +29,6 @@ app.use(session({
   secret: process.env.SESSION_SECRET || 'default_secret',
   resave: false,
   saveUninitialized: true,
-  cookie: { secure: true, maxAge: 3600000, httpOnly: false } // httpOnly set to false
-
 }));
 
 passportConfig(passport); 
@@ -49,6 +47,7 @@ app.get('/auth/google/callback', passport.authenticate('google', { session: fals
     const { token } = req.user;
 
     res.cookie('token', token, {
+      httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'Strict',
       maxAge: 3600000
