@@ -32,8 +32,7 @@ const login = async (req, res, next) => {
         );
 
         res.cookie('token', token, {
-            secure: process.env.NODE_ENV === 'production', 
-            sameSite: 'Strict', 
+            secure: process.env.NODE_ENV === 'production',
             maxAge: 3600000
         });
 
