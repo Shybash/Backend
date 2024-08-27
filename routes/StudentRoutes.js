@@ -1,9 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const { register } = require("../Controllers/Register-controller");
-const { login } = require("../Controllers/Login-controller");
-const studentForm = require("../Controllers/StudentForm-controller");
-const deleteStudent = require('../Controllers/deleteStudent'); // Import the deleteStudent function
+const authMiddleware = require('../middleware/authenticate');
+
+const { register } = require('../Controllers/Register-controller');
+const { login } = require('../Controllers/Login-controller');
+const studentForm = require('../Controllers/StudentForm-controller');
+const deleteStudent = require('../Controllers/deleteStudent');
 const Profile = require('../Controllers/Profile');
 const { studentQuery } = require('../Controllers/StudentQuery');
 const GetQuery = require('../Controllers/GetQuery');
@@ -11,19 +13,15 @@ const { getEvents } = require('../Controllers/GetEvents');
 
 require('dotenv').config();
 
-// Signup route
+
 router.post('/register', register);
-
-// Login route
 router.post('/login', login);
+router.post('/studentForm', authMiddleware, studentForm); 
+router.post('/StudentQuery', authMiddleware, studentQuery); 
 
-// Student list route
-router.post('/studentForm', studentForm);
 
-router.get('/student/:userId', Profile);
+router.get('/student/:userId', authMiddleware, Profile); 
+router.get('/GetEvents', getEvents); 
 
-router.post('/StudentQuery', studentQuery);
-
-router.get('/GetEvents',getEvents);
 
 module.exports = router;
