@@ -29,6 +29,8 @@ app.use(session({
   secret: process.env.SESSION_SECRET || 'default_secret',
   resave: false,
   saveUninitialized: true,
+  cookie: { secure: true, maxAge: 3600000, httpOnly: false } // httpOnly set to false
+
 }));
 
 passportConfig(passport); 
