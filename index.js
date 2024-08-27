@@ -25,10 +25,15 @@ app.use(cors({
 
 
 
+const session = require('express-session');
+
 app.use(session({
   secret: process.env.SESSION_SECRET || 'default_secret',
   resave: false,
   saveUninitialized: true,
+  cookie: {
+    httpOnly: false, // Allows JavaScript to access the cookie
+  },
 }));
 
 passportConfig(passport); 
