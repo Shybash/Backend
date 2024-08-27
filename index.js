@@ -6,7 +6,7 @@ const cookieParser = require('cookie-parser');
 const passport = require('passport'); 
 require('dotenv').config();
 const passportConfig = require('./config/passport'); 
-const connection = require('./db');
+const connection = require('./config/db');
 const studentRoutes=require('./routes/StudentRoutes');
 const collegeRoutes=require('./routes/CollegeRouter');
 const app = express();
@@ -47,7 +47,6 @@ app.get('/auth/google/callback', passport.authenticate('google', { session: fals
     const { token } = req.user;
 
     res.cookie('token', token, {
-      // httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'Strict',
       maxAge: 3600000
