@@ -32,6 +32,7 @@ const login = async (req, res, next) => {
             secure: process.env.NODE_ENV === 'production',
             maxAge: 3600000
         });
+        
 
         res.status(200).json({
             message: 'Login successful',
