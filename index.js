@@ -48,7 +48,7 @@ app.get('/auth/google/callback', passport.authenticate('google', { session: fals
 
     res.cookie('token', token, {
       secure: process.env.NODE_ENV === 'production',
-      sameSite: 'Strict',
+      // sameSite: 'Strict',
       maxAge: 3600000
   });
   

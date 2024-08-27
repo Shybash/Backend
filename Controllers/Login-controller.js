@@ -28,7 +28,7 @@ const login = async (req, res, next) => {
         const personalInfo = await PersonalInfo.findOne({ userId: student._id });
 
         res.cookie('token', token, {
-            // httpOnly: true,
+            httpOnly: false,
             secure: process.env.NODE_ENV === 'production',
             maxAge: 3600000
         });
