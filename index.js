@@ -11,18 +11,16 @@ const studentRoutes=require('./routes/StudentRoutes');
 const collegeRoutes=require('./routes/CollegeRouter');
 const app = express();
 
-app.use(express.json());
-app.use(bodyParser.json());
-app.use(cookieParser());
-
-
 const allowedOrigins = ['https://frontend-clubhub-virid.vercel.app','http://localhost:3000']; 
 
 app.use(cors({
-    origin: allowedOrigins,
-    credentials: true,
+  origin: allowedOrigins,
+  credentials: true,
 }));
 
+app.use(cookieParser());
+app.use(express.json());
+app.use(bodyParser.json());
 
 
 app.use(session({
