@@ -22,7 +22,6 @@ app.use(cookieParser());
 app.use(express.json());
 app.use(bodyParser.json());
 
-
 app.use(session({
   secret: process.env.SESSION_SECRET || 'default_secret',
   resave: false,
