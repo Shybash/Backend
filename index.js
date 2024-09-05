@@ -26,11 +26,6 @@ app.use(session({
   secret: process.env.SESSION_SECRET || 'default_secret',
   resave: false,
   saveUninitialized: true,
-  cookie: {
-    httpOnly: false,
-    secure: process.env.NODE_ENV === 'production',  // Ensure the cookie is only sent over HTTPS in production
-    maxAge: 1000 * 60 * 60 * 24  // Optional: Set the cookie expiry time (in milliseconds)
-  }
 }));
 
 
@@ -50,7 +45,6 @@ app.get('/auth/google/callback', passport.authenticate('google', { session: fals
     const { token } = req.user;
 
     res.cookie('token', token, {
-      secure: process.env.NODE_ENV === 'production',
       // sameSite: 'Strict',
       maxAge: 3600000
   });
