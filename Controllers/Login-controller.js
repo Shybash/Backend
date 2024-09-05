@@ -28,7 +28,7 @@ const login = async (req, res, next) => {
         const personalInfo = await PersonalInfo.findOne({ userId: student._id });
 
     res.cookie('token', token, {
-   httpOnly: false, // Allow the cookie to be accessed by the frontend
+   httpOnly: true, // Allow the cookie to be accessed by the frontend
     secure: true, // Ensure cookie is sent only over HTTPS
     maxAge: 3600000 // 1 hour in milliseconds
 });
