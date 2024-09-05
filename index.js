@@ -22,11 +22,15 @@ app.use(cookieParser());
 app.use(express.json());
 app.use(bodyParser.json());
 
-app.use(session({
-  secret: process.env.SESSION_SECRET || 'default_secret',
-  resave: false,
-  saveUninitialized: true,
-}));
+// app.use(session({
+//   secret: process.env.SESSION_SECRET || 'default_secret',
+//   resave: false,
+//   saveUninitialized: true,
+//   cookie: {
+//     httpOnly: false,
+//     maxAge: 1000 * 60 * 60 * 24  // Optional: Set the cookie expiry time (in milliseconds)
+//   }
+// }));
 
 
 passportConfig(passport); 

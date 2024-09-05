@@ -30,8 +30,7 @@ const login = async (req, res, next) => {
     res.cookie('token', token, {
    httpOnly: false, // Allow the cookie to be accessed by the frontend
     secure: true, // Ensure cookie is sent only over HTTPS
-    maxAge: 3600000 ,// 1 hour in milliseconds
-    sameSite:'None',
+    maxAge: 3600000 // 1 hour in milliseconds
 });
 
         
