@@ -1,18 +1,17 @@
 const Student = require('../models/Stdinfo'); 
 
 const Profile = async (req, res) => {
-    const userId = req.params.userId;
-
     try {
+        const userId = req.params.userId || req.user.id; 
         const student = await Student.findById(userId);
+
         if (!student) {
-            return res.status(404).send('Student not found');
+            return res.status(404).json({ error: 'Student not found' });
         }
-        
-        res.json(student);
+
+        res.status(200).json(student);
     } catch (error) {
-        console.error('Error fetching student', error);
-        res.status(500).send('Error fetching student');
+        res.status(500).json({ error: 'Server error' });
     }
 };
 

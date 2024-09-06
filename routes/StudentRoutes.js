@@ -23,10 +23,14 @@ router.post('/StudentQuery', authMiddleware, studentQuery);
 router.get('/student/:userId', authMiddleware, Profile); 
 router.get('/GetEvents', getEvents); 
 
+
 router.get('/is-logged-in', authMiddleware, (req, res) => {
     try {
-        
-        res.status(200).json({ loggedIn: true, user: req.user });
+        if (req.user) {
+            res.status(200).json({ loggedIn: true, user: req.user });
+        } else {
+            res.status(401).json({ loggedIn: false, user: null });
+        }
     } catch (error) {
         res.status(500).json({ error: 'Server error while checking authentication' });
     }
@@ -34,7 +38,6 @@ router.get('/is-logged-in', authMiddleware, (req, res) => {
 
 router.post('/logout', (req, res) => {
     try {
-        // Clear the JWT token from cookies
         res.clearCookie('token', {
             httpOnly: true,
             secure: true,
