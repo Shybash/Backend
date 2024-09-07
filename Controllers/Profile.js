@@ -2,7 +2,7 @@ const Student = require('../models/Stdinfo');
 
 const Profile = async (req, res) => {
     try {
-        const userId = req.params.userId || req.user.id; 
+        const userId = req.params.userId || req.user._id; 
         const student = await Student.findById(userId);
 
         if (!student) {
