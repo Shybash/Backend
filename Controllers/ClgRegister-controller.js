@@ -1,6 +1,7 @@
 const College = require('../models/College');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
+const PersonalInfo=require('../models/ClgInfo');
 require('dotenv').config();
 const RegisterClg= async(req, res, next) => {
     try {
@@ -30,6 +31,12 @@ const RegisterClg= async(req, res, next) => {
         const hashedPassword = await bcrypt.hashSync(password, 10);
 
         const college = await College.create({ username, email, password: hashedPassword ,confirmpassword});
+
+        const personalInfo=new PersonalInfo({
+            userId:newUser._id,
+            username,
+            
+        })
 
         res.status(201).json({ college });
     } catch (error) {
