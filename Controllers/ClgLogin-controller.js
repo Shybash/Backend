@@ -1,6 +1,7 @@
 const College = require('../models/College');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const PersonalInfo = require('../models/Stdinfo');
 require('dotenv').config();
 
 const collegeLogin = async (req, res, next) => {
