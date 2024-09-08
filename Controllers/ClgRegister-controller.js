@@ -15,13 +15,13 @@ const registerClg = async (req, res) => {
             return res.status(400).json({ error: "Password should be at least 6 characters long" });
         }
 
+        if (password !== confirmpassword) {
+            return res.status(400).json({ error: "Passwords do not match" });
+        }
+
         const existingCollege = await College.findOne({ email });
         if (existingCollege) {
             return res.status(400).json({ error: "User already exists" });
-        }
-
-        if (password !== confirmpassword) {
-            return res.status(400).json({ error: "Passwords do not match" });
         }
 
         const hashedPassword = await bcrypt.hash(password, 10);
@@ -48,6 +48,7 @@ const registerClg = async (req, res) => {
             clgInfo
         });
     } catch (error) {
+        console.error('Error in registerClg:', error); // Log the error
         res.status(500).json({ error: "Internal server error" });
     }
 };

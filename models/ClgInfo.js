@@ -1,28 +1,25 @@
 const mongoose = require('mongoose');
 
-const collegeInfoSchema = new mongoose.Schema({
+const clgInfoSchema = new mongoose.Schema({
     userId: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'College', 
+        ref: 'College',
         required: true,
     },
-    collegeName: {
+    username: {
         type: String,
         required: true,
     },
-    collegeCode: { 
-        type: String, 
+    email: {
+        type: String,
         required: true,
     },
-    imageName: {
-        type: String,
-    },
-    created: { 
-        type: Date, 
-        default: Date.now 
+    created: {
+        type: Date,
+        default: Date.now
     }
 });
 
-let CollegeInfo = mongoose.model('CollegeInfo', collegeInfoSchema);
+const ClgInfo = mongoose.model('ClgInfo', clgInfoSchema);
 
-module.exports = CollegeInfo;
+module.exports = ClgInfo;
