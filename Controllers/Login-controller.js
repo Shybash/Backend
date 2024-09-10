@@ -3,7 +3,6 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const PersonalInfo = require('../models/Stdinfo');
 require('dotenv').config();
-
 const login = async (req, res, next) => {
     try {
         const { email, password } = req.body;
@@ -25,12 +24,14 @@ const login = async (req, res, next) => {
             { expiresIn: '1h' }
         );
 
+        console.log('Generated Token - User ID:', student._id); // Add this log
+
         const personalInfo = await PersonalInfo.findOne({ userId: student._id });
 
         res.cookie('token', token, {
             httpOnly: true,
             secure: true,
-            maxAge: 3600000,
+            maxAge: 3600000, // 1 hour
             sameSite: 'None',
         });
 
@@ -44,6 +45,7 @@ const login = async (req, res, next) => {
             }
         });
     } catch (error) {
+        console.error('Login Error:', error); // Log error
         res.status(400).json({ error: error.message });
     }
 };
