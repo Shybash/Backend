@@ -43,8 +43,8 @@ app.get('/auth/google/callback', passport.authenticate('google', { session: fals
         sameSite: 'None',
     });
   
-    res.redirect('https://frontend-clubhub-virid.vercel.app/student');
-});
+    res.redirect('https://frontend-clubhub-virid.vercel.app/student?google=true');
+  });
 
 app.use("/api", studentRoutes);
 app.use("/api", collegeRoutes);
