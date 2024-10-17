@@ -6,6 +6,7 @@ const Profile = async (req, res) => {
         const student = await Student.findById(userId);
 
         if (!student) {
+            console.log("student not found");
             return res.status(404).json({ error: 'Student not found' });
         }
 

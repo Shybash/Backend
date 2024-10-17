@@ -42,7 +42,7 @@ app.get('/auth/google/callback', passport.authenticate('google', { session: fals
         maxAge: 3600000,
         sameSite: 'None',
     });
-  
+   
     res.redirect('https://frontend-clubhub-virid.vercel.app/student?google=true');
   });
 
