@@ -23,7 +23,7 @@ router.post('/AcceptStudent/:id', authMiddleware, AcceptStudent);
 
 
 router.get('/StudentForm', authMiddleware, StudentForm);
-router.get('/GetClubs', authMiddleware, GetClubs);
+router.get('/GetClubs',  GetClubs);
 router.get('/GetClubMembers', authMiddleware, GetClubMembers);
 router.get('/GetQuery', authMiddleware, GetQuery);
 
