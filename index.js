@@ -48,6 +48,7 @@ app.get('/auth/google/callback', passport.authenticate('google', { session: fals
 
 app.use("/api", studentRoutes);
 app.use("/api", collegeRoutes);
+console.log(" em ro bidda");
 
 const port = process.env.PORT || 4000;
 app.listen(port, () => {

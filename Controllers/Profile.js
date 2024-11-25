@@ -2,8 +2,12 @@ const Student = require('../models/Stdinfo');
 
 const Profile = async (req, res) => {
     try {
-        const userId = req.params.userId || req.user._id; 
-        const student = await Student.findById(userId);
+        const userId = req.params.userId; 
+        if(userId==undefined)
+        {
+            res.status(500).json({ error: 'Server error' });
+        }
+        const student = await Student.findOne({userId:userId});
 
         if (!student) {
             console.log("student not found");

@@ -26,9 +26,10 @@ router.get('/GetEvents', getEvents);
 router.get('/is-logged-in', authMiddleware, (req, res) => {
     try {
         if (req.user) {
-            res.status(200).json({ loggedIn: true, user: req.user });
+            console.log("req is user is ",req.user)
+            return res.status(200).json({ loggedIn: true, user: req.user });
         } else {
-            res.status(401).json({ loggedIn: false, user: null });
+            return res.status(401).json({ loggedIn: false, user: null });
         }
     } catch (error) {
         console.error('Error while checking authentication:', error); // Logging for debugging
