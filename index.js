@@ -30,21 +30,20 @@ connection();
 app.get('/auth/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
 
 app.get('/auth/google/callback', passport.authenticate('google', { session: false }), (req, res) => {
-    if (!req.user || !req.user.token) {
-        return res.status(500).send('Authentication failed: Token not found');
-    }
+  const { user, token } = req.user;
+  if (!token) {
+      return res.status(500).send('Authentication failed: Token not found');
+  }
 
-    const { token } = req.user;
-
-    res.cookie('token', token, {
-        httpOnly: true,
-        secure: true,
-        maxAge: 3600000,
-        sameSite: 'None',
-    });
-   
-    res.redirect('https://frontend-clubhub-virid.vercel.app/student?google=true');
+  res.cookie('token', token, {
+      httpOnly: true,
+      secure: true,
+      maxAge: 3600000,
+      sameSite: 'None',
   });
+  res.redirect('https://frontend-clubhub-virid.vercel.app/student?google=true');
+});
+
 
 app.use("/api", studentRoutes);
 app.use("/api", collegeRoutes);
