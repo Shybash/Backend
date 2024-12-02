@@ -26,16 +26,17 @@ router.get('/GetEvents', getEvents);
 router.get('/is-logged-in', authMiddleware, (req, res) => {
     try {
         if (req.user) {
-            console.log("req is user is ",req.user)
+            console.log('Authenticated user:', req.user);
             return res.status(200).json({ loggedIn: true, user: req.user });
         } else {
             return res.status(401).json({ loggedIn: false, user: null });
         }
     } catch (error) {
-        console.error('Error while checking authentication:', error); // Logging for debugging
-        res.status(500).json({ error: 'Server error while checking authentication' });
+        console.error('Error checking authentication:', error);
+        res.status(500).json({ error: 'Server error while checking authentication.' });
     }
 });
+
 
 router.post('/logout', (req, res) => {
     try {
