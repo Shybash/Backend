@@ -56,6 +56,7 @@ app.get('/auth/google', (req, res, next) => {
 app.get('/auth/google/callback', passport.authenticate('google'), async (req, res) => {
   const { token } = req.user;
 
+  console.log('Token:', token); 
   res.cookie('token', token, {
     httpOnly: true,
     secure: true,
