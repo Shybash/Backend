@@ -66,7 +66,9 @@ module.exports = function (passport) {
                     { expiresIn: '1h' }
                 );
                 console.log('Generated token:', token);
+                user.token = token; 
 
+                console.log(user.token);
                 return done(null, user);
             } catch (err) {
                 console.error('Error in Google Strategy:', err);
