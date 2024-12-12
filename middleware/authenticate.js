@@ -2,23 +2,32 @@ const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
 const authMiddleware = (req, res, next) => {
-    const token = req.cookies.token;
+    console.log(req.isAuthenticated());
+    
+    if(req.isAuthenticated())
+    {
+        next();
+    }
+    else{
     console.log('Auth middleware triggered');
+    console.log('Cookies:', req.cookies);
 
+    const token = req.cookies.token;
     if (!token) {
-        console.log('No token found');
+        console.error('Error: No token found in cookies');
         return res.status(401).json({ loggedIn: false, error: 'No token provided.' });
     }
 
     try {
         const decoded = jwt.verify(token, process.env.JWT_SECRET || 'fallback-secret-key');
+        console.log('Token decoded successfully:', decoded);
         req.user = decoded;
-        console.log('User authenticated:', decoded);
         next();
     } catch (error) {
-        console.error('Token verification failed:', error);
-        res.status(401).json({ loggedIn: false, error: 'Invalid or expired token.' });
+        console.error('Error: Token verification failed:', error);
+        return res.status(401).json({ loggedIn: false, error: 'Invalid or expired token.' });
     }
+}
 };
 
 module.exports = authMiddleware;

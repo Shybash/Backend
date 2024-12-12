@@ -8,6 +8,7 @@ const passportConfig = require('./config/passport');
 const connection = require('./config/db');
 const studentRoutes = require('./routes/StudentRoutes');
 const collegeRoutes = require('./routes/CollegeRouter');
+const PersonalInfo = require('./models/Stdinfo');
 const app = express();
 
 const allowedOrigins = ['https://frontend-clubhub-virid.vercel.app', 'http://localhost:3000'];
@@ -26,23 +27,44 @@ passportConfig(passport);
 app.use(passport.initialize());
 
 connection();
+//passport 
+const session = require('express-session');
 
-app.get('/auth/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
+app.use(
+    session({
+        secret: process.env.SESSION_SECRET || 'fallback-secret',
+        resave: false,
+        saveUninitialized: false,
+        cookie: {
+            httpOnly: true,
+            secure: true, 
+            maxAge: 3600000, 
+        },
+    })
+);
 
-app.get('/auth/google/callback', passport.authenticate('google', { session: false }), (req, res) => {
-  const { user, token } = req.user;
-  if (!token) {
-      return res.status(500).send('Authentication failed: Token not found');
-  }
+app.use(passport.initialize());
+app.use(passport.session());
 
-  res.cookie('token', token, {
-      httpOnly: true,
-      secure: true,
-      maxAge: 3600000,
-      sameSite: 'None',
-  });
-  res.redirect('https://frontend-clubhub-virid.vercel.app/student');
+
+app.get('/auth/google', (req, res, next) => {
+  console.log('Google authentication initiated');
+  passport.authenticate('google', { scope: ['profile', 'email'] })(req, res, next);
+  console.log("hi bro");
 });
+
+app.get('/auth/google/callback', passport.authenticate('google'), async (req, res) => {
+  const { user, token } = req.user;
+
+      res.cookie('token', token, {
+          httpOnly: true,
+          secure: true,
+          maxAge: 3600000, 
+          sameSite: 'None', 
+      });
+      res.redirect('https://frontend-clubhub-virid.vercel.app/student');
+});
+
 
 
 app.use("/api", studentRoutes);

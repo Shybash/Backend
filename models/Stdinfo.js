@@ -11,8 +11,7 @@ const personInfoSchema = new mongoose.Schema({
         required:true,
     },
     rollnum: { 
-        type: String, 
-        required: true
+        type: String,
      },
     imageName: {
         type:String,

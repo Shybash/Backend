@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const authMiddleware = require('../middleware/authenticate');
-
+const mongoose = require("mongoose");
 const { register } = require('../Controllers/Register-controller');
 const { login } = require('../Controllers/Login-controller');
 const studentForm = require('../Controllers/StudentForm-controller');
@@ -10,6 +10,7 @@ const Profile = require('../Controllers/Profile');
 const { studentQuery } = require('../Controllers/StudentQuery');
 const GetQuery = require('../Controllers/GetQuery');
 const { getEvents } = require('../Controllers/GetEvents');
+const PersonalInfo = require('../models/Stdinfo');
 
 require('dotenv').config();
 
@@ -23,8 +24,23 @@ router.post('/StudentQuery', authMiddleware, studentQuery);
 router.get('/student/:userId', authMiddleware, Profile); 
 router.get('/GetEvents', getEvents); 
 
-router.get('/is-logged-in', authMiddleware, (req, res) => {
+router.get('/is-logged-in', authMiddleware, async (req, res) => {
     try {
+        if(req.isAuthenticated())
+        {
+            const user  = req.user;
+            console.log("is req.user",req.user);
+            
+            const personalInfo = await PersonalInfo.findOne({ userId: user._id });
+            console.log(personalInfo);
+
+            return res.status(200).json({loggedIn:true,user: {
+                userId: personalInfo.userId,
+                email: req.user.email,
+                name: personalInfo.username,
+                collegeName: personalInfo.collegeName,
+            }});
+        }
         if (req.user) {
             console.log('Authenticated user:', req.user);
             return res.status(200).json({ loggedIn: true, user: req.user });
