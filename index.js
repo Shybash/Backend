@@ -37,7 +37,7 @@ app.use(
       saveUninitialized: false,
       cookie: {
           httpOnly: true,
-          secure: process.env.NODE_ENV === 'production',
+          secure: true,
           maxAge: 3600000,
           sameSite: 'None',
       },
@@ -60,7 +60,7 @@ app.get('/auth/google/callback', passport.authenticate('google'), async (req, re
 
   res.cookie('token', token, {
     httpOnly: true,
-    secure: process.env.NODE_ENV === 'production', 
+    secure:true, 
     maxAge: 3600000,
     sameSite: 'None',
 });
