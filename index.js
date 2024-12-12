@@ -62,7 +62,7 @@ app.get('/auth/google/callback', passport.authenticate('google'), async (req, re
     maxAge: 3600000,
     sameSite: 'None',
 });
-res.status(200).json({ message: 'Cookie set successfully' });
+// res.status(200).json({ message: 'Cookie set successfully' });
 
       res.redirect('https://frontend-clubhub-virid.vercel.app/student');
 });
