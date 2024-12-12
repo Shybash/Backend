@@ -31,17 +31,19 @@ connection();
 const session = require('express-session');
 
 app.use(
-    session({
-        secret: process.env.SESSION_SECRET || 'fallback-secret',
-        resave: false,
-        saveUninitialized: false,
-        cookie: {
-            httpOnly: true,
-            secure: true, 
-            maxAge: 3600000, 
-        },
-    })
+  session({
+      secret: process.env.SESSION_SECRET || 'fallback-secret',
+      resave: false,
+      saveUninitialized: false,
+      cookie: {
+          httpOnly: true,
+          secure: process.env.NODE_ENV === 'production',
+          maxAge: 3600000,
+          sameSite: 'None',
+      },
+  })
 );
+
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -58,7 +60,7 @@ app.get('/auth/google/callback', passport.authenticate('google'), async (req, re
 
   res.cookie('token', token, {
     httpOnly: true,
-    secure: false, 
+    secure: process.env.NODE_ENV === 'production', 
     maxAge: 3600000,
     sameSite: 'None',
 });
