@@ -58,7 +58,7 @@ app.get('/auth/google/callback', passport.authenticate('google'), async (req, re
 
   res.cookie('token', token, {
     httpOnly: true,
-    secure: process.env.NODE_ENV === 'production', 
+    secure: false, 
     maxAge: 3600000,
     sameSite: 'None',
 });
