@@ -55,7 +55,7 @@ app.get('/auth/google', (req, res, next) => {
 
 app.get('/auth/google/callback', passport.authenticate('google'), async (req, res) => {
   const { token } = req.user;
-
+  console.log("token sent",token);
   console.log('Token:', token); 
   res.cookie('token', token, {
     httpOnly: true,
@@ -66,7 +66,7 @@ app.get('/auth/google/callback', passport.authenticate('google'), async (req, re
 
 // res.status(200).json({ message: 'Cookie set successfully' });
 
-      res.redirect('https://frontend-clubhub-virid.vercel.app//student');
+      res.redirect('https://frontend-clubhub-virid.vercel.app');
 });
 
 
