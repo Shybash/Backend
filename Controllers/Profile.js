@@ -2,7 +2,7 @@ const Student = require('../models/Stdinfo');
 
 const Profile = async (req, res) => {
     try {
-        const userId = req.params.userId; 
+        const userId = req.params; 
         if(userId==undefined)
         {
             res.status(500).json({ error: 'Server error' });
