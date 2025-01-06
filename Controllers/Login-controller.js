@@ -33,7 +33,7 @@ const login = async (req, res, next) => {
             maxAge: 3600000,
             sameSite: 'None',
         });
-
+        console.log("i have sent na");
         res.status(200).json({
             message: 'Login successful',
             user: {
