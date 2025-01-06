@@ -7,7 +7,7 @@ const Profile = async (req, res) => {
         {
             res.status(500).json({ error: 'Server error' });
         }
-        const student = await Student.findOne({userId:userId});
+        const student = await Student.findOne({_id:userId});
 
         if (!student) {
             console.log("student not found");
